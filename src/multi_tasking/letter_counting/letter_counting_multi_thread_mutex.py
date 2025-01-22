@@ -31,12 +31,12 @@ def main() -> None:
     for c in "abcdefghijklmnopqrstuvwxyz":
         frequency[c] = 0
     start = time.perf_counter()
-    for i in range(1000, 1061):
+    for i in range(1000, 1182):
         url = f"https://www.rfc-editor.org/rfc/rfc{i}.txt"
         Thread(target=count_letters, args=(url, frequency)).start()
     global _counter
-    while _counter < 61:
-        time.sleep(0.1)
+    while _counter < 182:
+        time.sleep(0.5)
     end = time.perf_counter()
     print(json.dumps(frequency, indent=4))
     print(f"Done in {end - start} seconds")

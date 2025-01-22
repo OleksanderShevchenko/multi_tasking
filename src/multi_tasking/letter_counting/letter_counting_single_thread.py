@@ -7,7 +7,7 @@ def count_letters(url: str, frequency: dict) -> None:
     try:
         response = request.urlopen(url)
     except error.HTTPError as err:
-        print(f"url={url} error: {err}")
+        print(f"url={url} error: {err}")  # print failed url and error
     else:
         txt = str(response.read())
         for l in txt:
@@ -21,7 +21,7 @@ def main() -> None:
     for c in "abcdefghijklmnopqrstuvwxyz":
         frequency[c] = 0
     start = time.perf_counter()
-    for i in range(1000, 1061):
+    for i in range(1000, 1182):
         url = f"https://www.rfc-editor.org/rfc/rfc{i}.txt"
         count_letters(url, frequency)
     end = time.perf_counter()
