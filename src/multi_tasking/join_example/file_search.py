@@ -1,4 +1,5 @@
 import os
+import time
 
 
 class FileSearcher():
@@ -28,8 +29,11 @@ class FileSearcher():
 
 if __name__ == "__main__":
     fs = FileSearcher('<my_directory>', "README.md")
+    start = time.perf_counter()
     fs.search()
+    end = time.perf_counter()
     i = 1
     for item in fs._matches:
         print(f"#{i} Find matched file {item}")
         i += 1
+    print(f"Search takes {end - start} sec.")
