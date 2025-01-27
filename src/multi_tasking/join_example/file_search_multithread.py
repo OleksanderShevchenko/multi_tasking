@@ -12,6 +12,7 @@ class FileSearcher():
         else:
             raise ValueError(f'Inconsistent root directory passed for search - {root_path} ')
         self._matches = []
+        self._mutex = Lock()
 
     def search(self) -> None:
         self._matches.clear()
@@ -26,7 +27,9 @@ class FileSearcher():
                     t.start()
                     threads.append(t)
                 if file_for_search in full_path:
+                    self._mutex.acquire()
                     self._matches.append(full_path)
+                    self._mutex.release()
 
         t = Thread(target=__do_search, args=(self._root, self._file))
         t.start()
