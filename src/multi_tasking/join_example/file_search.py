@@ -27,7 +27,7 @@ class FileSearcher():
 
 
 if __name__ == "__main__":
-    fs = FileSearcher('D:\\Shevchenko\\Work', "README.md")
+    fs = FileSearcher('<my_directory>', "README.md")
     fs.search()
     i = 1
     for item in fs._matches:
