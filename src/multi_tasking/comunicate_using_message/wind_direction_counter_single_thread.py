@@ -23,7 +23,7 @@ class WindDirectionCounter(ABC):
     def _parse_to_array(self, file_content: str):
         lines = file_content.splitlines()
         metar_str = ""
-        metars = []
+        metars = []  # METeorological Airport ReportS
         for line in lines:
             if re.search(self._TAF_REGEX, line):
                 break
